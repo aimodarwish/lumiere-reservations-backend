@@ -135,20 +135,21 @@ export default function DashboardClient() {
   const [search, setSearch] = useState("");
   const [selectedCall, setSelectedCall] = useState<Call | null>(null);
   const [timelineRange, setTimelineRange] = useState<TimelineRange>("today");
+  const [copied, setCopied] = useState(false);
 
   const load = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
-    const response = await fetch("/api/dashboard/data", { cache: "no-store" });
-    if (response.status === 401) {
-      window.location.href = "/login";
-      return;
-    }
-    const payload = await response.json();
-    if (!response.ok || !payload.ok) {
-      setError(payload.error ?? "Unable to load dashboard.");
-    } else {
-      setSnapshot(payload.data);
-      setError("");
+    try {
+      const response = await fetch("/api/dashboard/data", { cache: "no-store" });
+      const payload = await response.json();
+      if (!response.ok || !payload.ok) {
+        setError(payload.error ?? "Unable to load dashboard.");
+      } else {
+        setSnapshot(payload.data);
+        setError("");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to connect to live dashboard.");
     }
     setLoading(false);
   }, []);
@@ -216,6 +217,16 @@ export default function DashboardClient() {
           <div className="brand-mark small">L</div>
           <div><strong>Lumière</strong><span>AI Reservations</span></div>
         </div>
+
+        <div className="sidebar-developer">
+          <div className="dev-avatar">MD</div>
+          <div>
+            <span className="dev-label">System Engineer</span>
+            <strong className="dev-name">Mohamad Darwish</strong>
+            <span className="dev-sub">Voice AI & Real-Time Cloud</span>
+          </div>
+        </div>
+
         <nav>
           {([
             ["overview", "Overview"],
@@ -230,25 +241,111 @@ export default function DashboardClient() {
         </nav>
         <div className="agent-card">
           <div className="agent-pulse"><span/></div>
-          <div><strong>Claire is online</strong><span>Accepting reservations</span></div>
+          <div><strong>Claire is online</strong><span>Accepting phone reservations</span></div>
         </div>
-        <form method="post" action="/api/auth/logout" className="logout-form">
-          <button type="submit">Sign out</button>
-        </form>
+        <div className="sidebar-contact-pill">
+          <span style={{ fontSize: "11px", color: "var(--gold)", fontWeight: 700, display: "block", marginBottom: "3px" }}>📞 Live Test Line</span>
+          <a href="tel:+14436379042" style={{ color: "#fff", textDecoration: "none", fontSize: "12px", fontWeight: 750, fontFamily: "monospace" }}>+1 (443) 637 9042</a>
+        </div>
       </aside>
 
       <main className="dashboard-main">
         <header className="topbar">
           <div>
-            <span className="page-kicker">Lumière Dubai</span>
-            <h1>{tab === "overview" ? "Good evening, Lumière team" : tab === "calls" ? "AI call intelligence" : tab === "tables" ? "Dining room capacity" : "Reservations"}</h1>
-            <p>{tab === "overview" ? "Your AI concierge is online and managing guest requests in real time." : "Live operational data from your AI reservation system."}</p>
+            <span className="page-kicker">Lumière Dubai · Production System</span>
+            <h1>{tab === "overview" ? "Lumière AI Command Center" : tab === "calls" ? "AI call intelligence" : tab === "tables" ? "Dining room capacity" : "Reservations"}</h1>
+            <p>{tab === "overview" ? "Autonomous voice concierge handling reservations with atomic table allocation in real time." : "Live operational data from your AI reservation system."}</p>
           </div>
           <div className="topbar-actions">
-            <div className="live-pill"><span/>Live</div>
+            <a href="tel:+14436379042" className="topbar-call-pill" title="Click to call live AI assistant">
+              <span className="call-pulse"></span>
+              <span><strong>Call AI:</strong> +1 (443) 637 9042</span>
+            </a>
+            <div className="live-pill"><span/>Live Sync</div>
             <button className="icon-button" onClick={() => load()} aria-label="Refresh"><Icon name="refresh"/></button>
           </div>
         </header>
+
+        {/* Featured Showcase & Live Call Testing Banner */}
+        <section className="showcase-banner">
+          <div className="showcase-main">
+            <div className="showcase-tags">
+              <span className="showcase-badge">
+                <span className="pulse-dot"></span>
+                Live Interactive System
+              </span>
+              <span className="engineer-pill">
+                <span className="crown-icon">★</span>
+                تمت برمجة وهندسة النظام بواسطة: <strong>Mohamad Darwish</strong>
+              </span>
+            </div>
+            
+            <h2 className="showcase-title">
+              Autonomous Voice AI Reservation & Table Orchestration
+            </h2>
+            <p className="showcase-desc">
+              نظام متكامل لمعالجة الحجوزات الهاتفية ذاتياً عبر الذكاء الاصطناعي الصوتي، مرتبط بقاعدة بيانات Supabase بدوال تخزينية لمنع التضارب، وتحديث فوري للمكالمات والتسجيلات والتفريغ الصوتي على لوحة التحكم.
+            </p>
+
+            <div className="showcase-meta">
+              <div className="meta-item">
+                <span className="meta-label">Lead Engineer</span>
+                <strong className="meta-val">Mohamad Darwish</strong>
+              </div>
+              <div className="meta-divider"></div>
+              <div className="meta-item">
+                <span className="meta-label">Voice Agent</span>
+                <strong className="meta-val">Claire (Vapi Real-Time Voice)</strong>
+              </div>
+              <div className="meta-divider"></div>
+              <div className="meta-item">
+                <span className="meta-label">Architecture</span>
+                <strong className="meta-val">Next.js + Supabase + Vapi</strong>
+              </div>
+              <div className="meta-divider"></div>
+              <div className="meta-item">
+                <span className="meta-label">Concurrency</span>
+                <strong className="meta-val">PostgreSQL Advisory Locks</strong>
+              </div>
+            </div>
+          </div>
+
+          <div className="call-tester-card">
+            <div className="call-tester-header">
+              <div className="phone-beacon">
+                <span className="beacon-ring"></span>
+                <span className="beacon-core">📞</span>
+              </div>
+              <div>
+                <span className="call-kicker">Live Interactive Demo</span>
+                <h3 className="call-title">يمكنك الاتصال لتجربة النظام مباشرة</h3>
+              </div>
+            </div>
+
+            <a href="tel:+14436379042" className="call-number-btn" title="Call directly">
+              <span className="call-btn-icon">📞</span>
+              <span className="call-btn-num">+1 (443) 637 9042</span>
+              <span className="call-btn-badge">Tap to Call</span>
+            </a>
+
+            <div className="call-instruction">
+              <span className="bullet">●</span>
+              <span>اتصل الآن واطلب حجز طاولة لأي موعد؛ ستقوم Claire بالتحقق وتثبيت الحجز وعرضه على هذه الشاشة فوراً مع تسجيل المكالمة.</span>
+            </div>
+
+            <button 
+              type="button"
+              className="copy-number-btn"
+              onClick={() => {
+                navigator.clipboard.writeText("+14436379042");
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2500);
+              }}
+            >
+              {copied ? "✓ تم نسخ الرقم بنجاح!" : "📋 نسخ الرقم (+1 443 637 9042)"}
+            </button>
+          </div>
+        </section>
 
         {error ? <div className="dashboard-error">{error}</div> : null}
         {loading && !snapshot ? <div className="loading-state">Loading Lumière dashboard…</div> : null}
