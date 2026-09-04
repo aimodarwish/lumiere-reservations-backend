@@ -9,5 +9,5 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  return NextResponse.json({ ok: true, message: "Lumière Vapi Webhook endpoint is active" });
+  return NextResponse.json({ ok: true, message: "Lumière Voice Webhook endpoint is active" });
 }

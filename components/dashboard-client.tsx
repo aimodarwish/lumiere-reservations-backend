@@ -266,92 +266,92 @@ export default function DashboardClient() {
           </div>
         </header>
 
-        {/* Featured Showcase & Live Call Testing Banner */}
-        <section className="showcase-banner">
-          <div className="showcase-main">
-            <div className="showcase-tags">
-              <span className="showcase-badge">
-                <span className="pulse-dot"></span>
-                Live Interactive System
-              </span>
-              <span className="engineer-pill">
-                <span className="crown-icon">★</span>
-                Architected & Engineered by <strong>Mohamad Darwish</strong>
-              </span>
-            </div>
-            
-            <h2 className="showcase-title">
-              Autonomous Voice AI Reservation & Table Orchestration
-            </h2>
-            <p className="showcase-desc">
-              Production-grade autonomous phone reservation engine powered by Real-Time Voice AI. Features sub-500ms conversational latency, atomic table concurrency control via PostgreSQL advisory locks, automated guest profiling, and live telemetry streaming.
-            </p>
-
-            <div className="showcase-meta">
-              <div className="meta-item">
-                <span className="meta-label">Lead Engineer</span>
-                <strong className="meta-val">Mohamad Darwish</strong>
-              </div>
-              <div className="meta-divider"></div>
-              <div className="meta-item">
-                <span className="meta-label">Voice Agent</span>
-                <strong className="meta-val">Claire (Vapi Real-Time Voice)</strong>
-              </div>
-              <div className="meta-divider"></div>
-              <div className="meta-item">
-                <span className="meta-label">Architecture</span>
-                <strong className="meta-val">Next.js + Supabase + Vapi</strong>
-              </div>
-              <div className="meta-divider"></div>
-              <div className="meta-item">
-                <span className="meta-label">Concurrency</span>
-                <strong className="meta-val">PostgreSQL Advisory Locks</strong>
-              </div>
-            </div>
-          </div>
-
-          <div className="call-tester-card">
-            <div className="call-tester-header">
-              <div className="phone-beacon">
-                <span className="beacon-ring"></span>
-                <span className="beacon-core">📞</span>
-              </div>
-              <div>
-                <span className="call-kicker">Live Interactive Demo</span>
-                <h3 className="call-title">Call this number to test the system live</h3>
-              </div>
-            </div>
-
-            <a href="tel:+14436379042" className="call-number-btn" title="Call directly">
-              <span className="call-btn-icon">📞</span>
-              <span className="call-btn-num">+1 (443) 637 9042</span>
-              <span className="call-btn-badge">Tap to Call</span>
-            </a>
-
-            <div className="call-instruction">
-              <span className="bullet">●</span>
-              <span>Call now and request a table for any date or party size. Claire verifies real-time capacity, locks the table, and logs the booking, transcript, and audio recording to this dashboard instantly.</span>
-            </div>
-
-            <button 
-              type="button"
-              className="copy-number-btn"
-              onClick={() => {
-                navigator.clipboard.writeText("+14436379042");
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2500);
-              }}
-            >
-              {copied ? "✓ Number Copied to Clipboard!" : "📋 Copy Number (+1 443 637 9042)"}
-            </button>
-          </div>
-        </section>
-
         {error ? <div className="dashboard-error">{error}</div> : null}
         {loading && !snapshot ? <div className="loading-state">Loading Lumière dashboard…</div> : null}
 
         {snapshot && tab === "overview" ? (
           <>
+            {/* Featured Showcase & Live Call Testing Banner (Overview Only) */}
+            <section className="showcase-banner">
+              <div className="showcase-main">
+                <div className="showcase-tags">
+                  <span className="showcase-badge">
+                    <span className="pulse-dot"></span>
+                    Live Interactive System
+                  </span>
+                  <span className="engineer-pill">
+                    <span className="crown-icon">★</span>
+                    Architected & Engineered by <strong>Mohamad Darwish</strong>
+                  </span>
+                </div>
+                
+                <h2 className="showcase-title">
+                  Autonomous Voice AI Reservation & Table Orchestration
+                </h2>
+                <p className="showcase-desc">
+                  Production-grade autonomous phone reservation engine powered by Real-Time Voice AI. Features sub-500ms conversational latency, atomic table concurrency control via PostgreSQL advisory locks, automated guest profiling, and live telemetry streaming.
+                </p>
+
+                <div className="showcase-meta">
+                  <div className="meta-item">
+                    <span className="meta-label">Lead Engineer</span>
+                    <strong className="meta-val">Mohamad Darwish</strong>
+                  </div>
+                  <div className="meta-divider"></div>
+                  <div className="meta-item">
+                    <span className="meta-label">Voice Agent</span>
+                    <strong className="meta-val">Claire (Real-Time Voice AI)</strong>
+                  </div>
+                  <div className="meta-divider"></div>
+                  <div className="meta-item">
+                    <span className="meta-label">Architecture</span>
+                    <strong className="meta-val">Next.js + Supabase + Voice AI</strong>
+                  </div>
+                  <div className="meta-divider"></div>
+                  <div className="meta-item">
+                    <span className="meta-label">Concurrency</span>
+                    <strong className="meta-val">PostgreSQL Advisory Locks</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div className="call-tester-card">
+                <div className="call-tester-header">
+                  <div className="phone-beacon">
+                    <span className="beacon-ring"></span>
+                    <span className="beacon-core">📞</span>
+                  </div>
+                  <div>
+                    <span className="call-kicker">Live Interactive Demo</span>
+                    <h3 className="call-title">Call this number to test the system live</h3>
+                  </div>
+                </div>
+
+                <a href="tel:+14436379042" className="call-number-btn" title="Call directly">
+                  <span className="call-btn-icon">📞</span>
+                  <span className="call-btn-num">+1 (443) 637 9042</span>
+                  <span className="call-btn-badge">Tap to Call</span>
+                </a>
+
+                <div className="call-instruction">
+                  <span className="bullet">●</span>
+                  <span>Call now and request a table for any date or party size. Claire verifies real-time capacity, locks the table, and logs the booking, transcript, and audio recording to this dashboard instantly.</span>
+                </div>
+
+                <button 
+                  type="button"
+                  className="copy-number-btn"
+                  onClick={() => {
+                    navigator.clipboard.writeText("+14436379042");
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2500);
+                  }}
+                >
+                  {copied ? "✓ Number Copied to Clipboard!" : "📋 Copy Number (+1 443 637 9042)"}
+                </button>
+              </div>
+            </section>
+
             <section className="stats-grid">
               <StatCard label="Reservations today" value={snapshot.stats.reservationsToday} meta="Confirmed and active" icon="reservations"/>
               <StatCard label="Upcoming reservations" value={snapshot.stats.upcomingReservations} meta="Tomorrow and beyond" icon="spark"/>
@@ -461,7 +461,7 @@ export default function DashboardClient() {
                   <div><strong>{call.caller_phone || "Web caller"}</strong><span>{call.ai_summary || call.call_outcome || "AI reservation conversation"}</span><small>{formatDuration(call.duration_seconds)} · {new Date(call.created_at).toLocaleString()}</small></div>
                   <StatusBadge status={call.reservation_id ? "confirmed" : (call.call_status || "completed")}/>
                 </button>)}
-                {!snapshot.calls.length ? <div className="empty-state">End-of-call reports will appear here after you connect the Vapi webhook.</div> : null}
+                {!snapshot.calls.length ? <div className="empty-state">End-of-call reports and session telemetry will appear here after calls are completed.</div> : null}
               </div>
             </article>
             <article className="panel call-detail-panel">
@@ -469,7 +469,7 @@ export default function DashboardClient() {
                 <div className="call-detail-top"><div><span className="panel-kicker">Call intelligence</span><h2>{selectedCall.caller_phone || "Web caller"}</h2></div><StatusBadge status={selectedCall.reservation_id ? "confirmed" : "completed"}/></div>
                 <div className="call-metrics"><div><span>Duration</span><strong>{formatDuration(selectedCall.duration_seconds)}</strong></div><div><span>Sentiment</span><strong>{selectedCall.customer_sentiment || "Not analyzed"}</strong></div><div><span>Outcome</span><strong>{selectedCall.call_outcome || "Completed"}</strong></div></div>
                 {selectedCall.recording_url ? <audio controls src={selectedCall.recording_url} className="audio-player"/> : null}
-                <div className="detail-section"><h3>AI summary</h3><p>{selectedCall.ai_summary || "No summary was returned by Vapi for this call."}</p></div>
+                <div className="detail-section"><h3>AI summary</h3><p>{selectedCall.ai_summary || "No summary was generated for this call."}</p></div>
                 <div className="detail-section"><h3>Transcript</h3><div className="transcript-box">{selectedCall.transcript || "No transcript available yet."}</div></div>
               </> : <div className="empty-detail"><div className="activity-icon large"><Icon name="calls"/></div><h2>Select a call</h2><p>Open a conversation to review its summary, transcript, recording, sentiment, and booking outcome.</p></div>}
             </article>

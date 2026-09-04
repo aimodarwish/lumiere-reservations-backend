@@ -3,7 +3,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16.3-black?logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
-[![Vapi AI](https://img.shields.io/badge/Vapi-Real--Time%20Voice-6366F1)](https://vapi.ai/)
+[![Voice AI](https://img.shields.io/badge/Voice%20AI-Real--Time%20Telephony-6366F1)](https://github.com/aimodarwish/lumiere-reservations-backend)
 [![Vercel](https://img.shields.io/badge/Vercel-Production%20Deployment-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](https://opensource.org/licenses/MIT)
 
@@ -25,7 +25,7 @@
 
 ## 🏛️ Executive Summary
 
-**Lumière AI Reservation System** is an enterprise-grade, real-time autonomous voice reservation platform designed for luxury hospitality. Powered by **Vapi Real-Time Voice AI**, **Next.js 16 (Turbopack)**, and **Supabase (PostgreSQL with custom atomic stored procedures)**, the system manages inbound phone inquiries, verifies dining capacity, executes zero-conflict atomic table allocation, and streams live conversation telemetry, transcripts, and audio recordings directly into an executive dashboard in real-time.
+**Lumière AI Reservation System** is an enterprise-grade, real-time autonomous voice reservation platform designed for luxury hospitality. Powered by **Autonomous Real-Time Voice AI**, **Next.js 16 (Turbopack)**, and **Supabase (PostgreSQL with custom atomic stored procedures)**, the system manages inbound phone inquiries, verifies dining capacity, executes zero-conflict atomic table allocation, and streams live conversation telemetry, transcripts, and audio recordings directly into an executive dashboard in real-time.
 
 ```
                                   ┌─────────────────────────────────────────┐
@@ -35,7 +35,7 @@
                                                        │
                                                        ▼
                                   ┌─────────────────────────────────────────┐
-                                  │             VAPI VOICE AI               │
+                                  │          REAL-TIME VOICE AI             │
                                   │         Real-Time Hostess (Claire)      │
                                   └───────┬─────────────────────────┬───────┘
                                           │                         │
@@ -73,7 +73,7 @@ High-demand restaurants frequently face race conditions when multiple callers or
 
 ### 2. Sub-500ms Conversational Voice Latency
 - Low-latency tool-call orchestration built on Next.js 16 Edge & Serverless route handlers.
-- Instant tool response schemas return structured conversational directives for Vapi to respond naturally without awkward pauses.
+- Instant tool response schemas return structured conversational directives for the AI voice hostess to respond naturally without awkward pauses.
 
 ### 3. Automatic Customer Intelligence & CRM
 - Automatically identifies repeat callers via normalized phone number indexing (`E.164`).
@@ -94,7 +94,7 @@ High-demand restaurants frequently face race conditions when multiple callers or
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack, Serverless API Routes)
 - **Language**: [TypeScript 5.9](https://www.typescriptlang.org/) (Strict mode, zero `any` policy for business entities)
 - **Database & Storage**: [Supabase](https://supabase.com/) (PostgreSQL 15+, PL/pgSQL Stored Procedures, RLS)
-- **Voice AI Engine**: [Vapi](https://vapi.ai/) (Real-time WebRTC/SIP telephony agent, function calling)
+- **Voice AI Telephony Engine**: Real-time WebRTC/SIP low-latency conversational pipeline with function calling
 - **Schema Validation**: [Zod](https://zod.dev/) (Runtime validation of incoming LLM tool calls)
 - **Styling**: Vanilla Custom CSS Design Tokens (Responsive, Glassmorphism, CSS Grid)
 - **Hosting & CI/CD**: [Vercel](https://vercel.com/)
