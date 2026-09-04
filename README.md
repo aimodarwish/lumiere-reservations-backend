@@ -16,9 +16,9 @@
 
 | Target | URL / Details |
 | :--- | :--- |
-| **🌐 Production Dashboard Showcase** | [https://lumiere-reservations-backend.vercel.app/](https://lumiere-reservations-backend.vercel.app/) |
+| **🌐 Production Dashboard Showcase** | [https://lumiere-reservations-backend-navy.vercel.app/](https://lumiere-reservations-backend-navy.vercel.app/) |
 | **📞 Live Voice AI Phone Line** | **`+1 (443) 637 9042`** *(Call 24/7 to speak with AI Hostess Claire)* |
-| **⚡ Live Webhook Endpoint** | `https://lumiere-reservations-backend.vercel.app/api/vapi/events` |
+| **⚡ Live Webhook Endpoint** | `https://lumiere-reservations-backend-navy.vercel.app/api/vapi/events` |
 | **📦 GitHub Repository** | [https://github.com/aimodarwish/lumiere-reservations-backend](https://github.com/aimodarwish/lumiere-reservations-backend) |
 
 ---
