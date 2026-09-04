@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "properties": {
+    "guest_name": {
+      "type": "string",
+      "description": "The guest's confirmed full name for the reservation."
+    },
+    "reservation_date": {
+      "type": "string",
+      "description": "The confirmed reservation date in YYYY-MM-DD format, resolved using the Asia/Dubai timezone.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "reservation_time": {
+      "type": "string",
+      "description": "The confirmed reservation time in 24-hour HH:mm format using the Asia/Dubai timezone.",
+      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+    },
+    "party_size": {
+      "type": "integer",
+      "description": "The confirmed total number of guests. Must be a whole number between 1 and 8.",
+      "minimum": 1,
+      "maximum": 8
+    },
+    "seating_preference": {
+      "type": "string",
+      "description": "The guest's confirmed seating preference.",
+      "enum": ["indoor", "terrace", "no_preference"]
+    },
+    "occasion": {
+      "type": "string",
+      "description": "The special occasion. Use an empty string when there is no occasion."
+    },
+    "dietary_requirements": {
+      "type": "string",
+      "description": "All confirmed allergies or dietary requirements. Use an empty string when there are none."
+    },
+    "special_requests": {
+      "type": "string",
+      "description": "Any other confirmed guest request. Use an empty string when there are no special requests."
+    }
+  },
+  "required": [
+    "guest_name",
+    "reservation_date",
+    "reservation_time",
+    "party_size",
+    "seating_preference",
+    "occasion",
+    "dietary_requirements",
+    "special_requests"
+  ],
+  "additionalProperties": false
+}
