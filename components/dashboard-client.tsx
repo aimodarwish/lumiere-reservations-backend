@@ -276,7 +276,7 @@ export default function DashboardClient() {
               </span>
               <span className="engineer-pill">
                 <span className="crown-icon">★</span>
-                تمت برمجة وهندسة النظام بواسطة: <strong>Mohamad Darwish</strong>
+                Architected & Engineered by <strong>Mohamad Darwish</strong>
               </span>
             </div>
             
@@ -284,7 +284,7 @@ export default function DashboardClient() {
               Autonomous Voice AI Reservation & Table Orchestration
             </h2>
             <p className="showcase-desc">
-              نظام متكامل لمعالجة الحجوزات الهاتفية ذاتياً عبر الذكاء الاصطناعي الصوتي، مرتبط بقاعدة بيانات Supabase بدوال تخزينية لمنع التضارب، وتحديث فوري للمكالمات والتسجيلات والتفريغ الصوتي على لوحة التحكم.
+              Production-grade autonomous phone reservation engine powered by Real-Time Voice AI. Features sub-500ms conversational latency, atomic table concurrency control via PostgreSQL advisory locks, automated guest profiling, and live telemetry streaming.
             </p>
 
             <div className="showcase-meta">
@@ -318,7 +318,7 @@ export default function DashboardClient() {
               </div>
               <div>
                 <span className="call-kicker">Live Interactive Demo</span>
-                <h3 className="call-title">يمكنك الاتصال لتجربة النظام مباشرة</h3>
+                <h3 className="call-title">Call this number to test the system live</h3>
               </div>
             </div>
 
@@ -330,7 +330,7 @@ export default function DashboardClient() {
 
             <div className="call-instruction">
               <span className="bullet">●</span>
-              <span>اتصل الآن واطلب حجز طاولة لأي موعد؛ ستقوم Claire بالتحقق وتثبيت الحجز وعرضه على هذه الشاشة فوراً مع تسجيل المكالمة.</span>
+              <span>Call now and request a table for any date or party size. Claire verifies real-time capacity, locks the table, and logs the booking, transcript, and audio recording to this dashboard instantly.</span>
             </div>
 
             <button 
@@ -342,7 +342,7 @@ export default function DashboardClient() {
                 setTimeout(() => setCopied(false), 2500);
               }}
             >
-              {copied ? "✓ تم نسخ الرقم بنجاح!" : "📋 نسخ الرقم (+1 443 637 9042)"}
+              {copied ? "✓ Number Copied to Clipboard!" : "📋 Copy Number (+1 443 637 9042)"}
             </button>
           </div>
         </section>
