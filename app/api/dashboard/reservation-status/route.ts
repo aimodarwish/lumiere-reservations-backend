@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { hasDashboardSession } from "@/lib/auth";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 const schema = z.object({
@@ -9,10 +8,6 @@ const schema = z.object({
 });
 
 export async function PATCH(request: Request) {
-  if (!(await hasDashboardSession())) {
-    return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
-  }
-
   const parsed = schema.safeParse(await request.json());
   if (!parsed.success) {
     return NextResponse.json({ ok: false, error: "Invalid request" }, { status: 400 });

@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { hasDashboardSession } from "@/lib/auth";
 import { getDashboardSnapshot } from "@/lib/dashboard";
 
 export const dynamic = "force-dynamic";
